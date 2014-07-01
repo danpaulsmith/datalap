@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>DataLap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="components_files/bootstrap.css" rel="stylesheet">
+    <link href="components_files/bootstrap-responsive.css" rel="stylesheet">
+    <link href="components_files/docs.css" rel="stylesheet">
+    <link href="components_files/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+
+  </head>
+
+  <body data-twttr-rendered="true" data-spy="scroll" data-target=".bs-docs-sidebar">
+	<style>
+	.jumbotron:after {
+		background:url("file:///Users/dansmith/Desktop/Screen%20Shot%202012-10-25%20at%2018.02.56.png") repeat scroll center center transparent !important;
+	}
+	div.span12 {
+		margin-left:0 !important;
+	}
+	div.container div.intro {
+		padding-top:30px;
+		padding-bottom:30px;
+	}
+	div.container div.span6.theme2 {
+		text-align:right;
+	}
+	form#themes_form .control-group {
+	    background: none repeat scroll 0 0 #F2F2F2;
+	    border-radius: 3px 3px 3px 3px;
+	    margin-bottom: 10px;
+	    padding: 20px;
+	}
+	form#themes_form label {
+	    color: #141414;
+	    display: block;
+	    font-size: 20px;
+	    margin-bottom: 20px;
+	    text-align: center;
+	}
+	div.submit {
+	    margin-top: 30px;
+	    text-align: center;
+	}
+	div.progressBar {
+		display:none;
+	}
+	div.loading {
+		display:none;
+	}
+	div.progressBar .progress {
+		height: 40px !important;
+	}
+	div.progressBar .progress .bar {
+		font-size: 20px !important;
+	    padding-top: 10px !important;
+	}
+	.table.table-striped.table-bordered td.centered {
+		text-align:center;
+	}
+	.table.table-striped.table-bordered a {
+	    display: inline-block;
+	    margin-bottom: 5px;
+	    margin-left: 5px;
+	}
+	.table.table-striped.table-bordered a.name {
+	    display: inline-block;
+	    margin-bottom: 5px;
+	    margin-left: 0px;
+	}
+	.table.table-striped.table-bordered a:hover span {
+		background:#000000;
+		color:#FFFFFF;
+		text-decoration:none;
+	}
+	table.analysis td {
+		cursor:pointer;
+	}
+	table.analysis td.highlight {
+		background:#FFFFDD;
+	}
+	table.analysis tr.highlight {
+		background:#F4FAFF;
+	}
+	table.analysis tr.no-overlap {
+	    background: none repeat scroll 0 0 #FFE3E3 !important;
+	}
+	span.muted {
+	    color: #AAAAAA;
+	    font-size: 12px;
+	    font-style: italic;
+	}
+	</style>
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="http://www.theodi.org/" class="brand" target="_blank"><img style="width: 60px;" src="http://www.theodi.org/sites/default/files/logo.svg"></a>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>DataLap</h1>
+    <p class="lead">Find out which data.gov.uk datasets overlap</p>
+  </div>
+</header>
+
+  <div class="container">
+
+    <div class="row-fluid">
+    
+	<div class="span12 ">
+		
+    <div class="intro">
+    	<p class="lead">Click on the table to find datasets that share themes.</p>
+    </div>
+
+    <div class="row-fluid">
+	
+			<!-- Theme analysis -->
+			<div class="table-analysis span12">
+		<table class="table table-bordered analysis"><tbody><tr dir="ltr"><td class="s0"></td><td class="s1" dir="ltr">Administration</td><td class="s1" dir="ltr">Defence</td><td class="s1" dir="ltr">Education</td><td class="s1" dir="ltr">Environment</td><td class="s1" dir="ltr">Finance</td><td class="s1" dir="ltr">Government</td><td class="s1" dir="ltr">Health</td><td class="s1" dir="ltr">Location</td><td class="s1" dir="ltr">Society</td><td class="s1" dir="ltr">Spending Data</td><td class="s1" dir="ltr">Transportation</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Administration</td><td class="s3" dir="ltr"></td><td class="s4">0</td><td class="s4">3</td><td class="s4">4</td><td class="s4">7</td><td class="s4">76</td><td class="s4">2</td><td class="s4">0</td><td class="s4">3</td><td class="s4">0</td><td class="s4">1</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Defence</td><td class="s4">0</td><td class="s3" dir="ltr"></td><td class="s4">1</td><td class="s4">3</td><td class="s4">4</td><td class="s4">14</td><td class="s4">6</td><td class="s4">0</td><td class="s4">1</td><td class="s4">3</td><td class="s4">2</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Education</td><td class="s4">3</td><td class="s4">1</td><td class="s3" dir="ltr"></td><td class="s4">4</td><td class="s4">5</td><td class="s4">7</td><td class="s4">7</td><td class="s4">0</td><td class="s4">6</td><td class="s4">3</td><td class="s4">3</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Environment</td><td class="s4">4</td><td class="s4">3</td><td class="s4">4</td><td class="s3" dir="ltr"></td><td class="s4">3</td><td class="s4">35</td><td class="s4">8</td><td class="s4">0</td><td class="s4">1</td><td class="s4">29</td><td class="s4">2</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Finance</td><td class="s4">7</td><td class="s4">3</td><td class="s4">5</td><td class="s4">3</td><td class="s3" dir="ltr"></td><td class="s4">45</td><td class="s4">53</td><td class="s4">0</td><td class="s4">7</td><td class="s4">37</td><td class="s4">1</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Government</td><td class="s4">76</td><td class="s4">10</td><td class="s4">7</td><td class="s4">35</td><td class="s4">45</td><td class="s3" dir="ltr"></td><td class="s4">27</td><td class="s4">1</td><td class="s4">8</td><td class="s4">79</td><td class="s4">4</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Health</td><td class="s4">2</td><td class="s4">12</td><td class="s4">8</td><td class="s4">11</td><td class="s4">65</td><td class="s4">37</td><td class="s3" dir="ltr"></td><td class="s4">0</td><td class="s4">5</td><td class="s4">38</td><td class="s4">3</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Location</td><td class="s4">0</td><td class="s4">0</td><td class="s4">0</td><td class="s4">0</td><td class="s4">0</td><td class="s4">1</td><td class="s4">0</td><td class="s3" dir="ltr"></td><td class="s4">0</td><td class="s4">0</td><td class="s4">0</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Society</td><td class="s4">3</td><td class="s4">1</td><td class="s4">6</td><td class="s4">1</td><td class="s4">7</td><td class="s4">8</td><td class="s4">4</td><td class="s4">0</td><td class="s3" dir="ltr"></td><td class="s4">6</td><td class="s4">2</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Spending Data</td><td class="s4">0</td><td class="s4">3</td><td class="s4">3</td><td class="s4">29</td><td class="s4">37</td><td class="s4">79</td><td class="s4">38</td><td class="s4">0</td><td class="s4">6</td><td class="s3" dir="ltr"></td><td class="s4">0</td></tr><tr dir="ltr"><td class="s2" dir="ltr">Transportation</td><td class="s4">1</td><td class="s4">2</td><td class="s4">3</td><td class="s4">2</td><td class="s4">1</td><td class="s4">5</td><td class="s4">2</td><td class="s4">0</td><td class="s4">2</td><td class="s4">0</td><td class="s3" dir="ltr"></td></tr>
+			<tr class="no-overlap" dir="ltr"><td class="s2" dir="ltr">No overlap</td><td class="s4">44</td><td class="s4">3</td><td class="s4">4</td><td class="s4">50</td><td class="s4">11</td><td class="s4">0</td><td class="s4">84</td><td class="s4">1</td><td class="s4">171</td><td class="s4">159</td><td class="s3" dir="ltr">11</td></tr>			
+				
+			</tbody></table> 
+				</div>	
+
+	<!-- Themes selection -->
+    <!--
+	<div class="span12">
+		<form class="form" id="themes_form" novalidate="novalidate">
+			<div class="span6">
+				  <div class="control-group">
+				  <label for="inputIcon" class="control-label">Theme 1</label>
+				  <div class="controls">
+				  <div class="input-prepend">
+				  <select id="theme1" class="span12">
+					<option value="Administration">Administration</option>
+					<option value="Defence">Defence</option>
+					<option value="Education">Education</option>
+					<option value="Environment">Environment</option>
+					<option value="Finance">Finance</option>
+					<option value="Government">Government</option>
+					<option value="Health">Health</option>
+					<option value="Location">Location</option>
+					<option value="Society">Society</option>
+					<option value="Spending Data">Spending Data</option>
+					<option value="Transportation">Transportation</option>
+				  </select>
+				  </div>
+				  </div>
+				  </div>
+			</div>
+			<div class="span6 theme2">
+				  <div class="control-group">
+				  <label for="inputIcon" class="control-label">Theme 2</label>
+				  <div class="controls">
+				  <div class="input-prepend">
+				  <select id="theme2" class="span12">
+					<option value="Administration">Administration</option>
+					<option value="Defence">Defence</option>
+					<option value="Education">Education</option>
+					<option value="Environment">Environment</option>
+					<option value="Finance">Finance</option>
+					<option value="Government">Government</option>
+					<option value="Health">Health</option>
+					<option value="Location">Location</option>
+					<option value="Society">Society</option>
+					<option value="Spending Data">Spending Data</option>
+					<option value="Transportation">Transportation</option>
+				  </select>
+				  </div>
+				  </div>
+				  </div>
+			</div>
+			
+			<div class="submit span12">
+				<button class="btn-large btn-primary btn-inverse" type="button">Find datasets</button>
+			</div>
+			
+		</form> 
+					
+		<div class="loading span12">
+			<img src="" />
+		</div>
+		-->
+		
+		<div class="progressBar span12">
+		    <div class="progress progress-striped active">
+		        <div class="bar" style="width: 245px;"></div>
+		    </div>
+		</div>
+			
+	</div>
+	
+	<!-- results -->
+	<div class="results resultHTML span12">
+		<!--<div class="span4">
+			
+		</div>
+		<div class="span4">
+			<ul></ul>
+		</div>
+		-->
+	</div>
+
+    </div>
+
+    </div>
+    </div>
+
+  </div>
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+
+        <p>DataLap app built at the Open Data Institute hackday 25 &amp; 26 October 2012.</p>
+		<p>Authors: Dan Smith, Gary Noble, Philip Garnett, Benjamin Sims, Ian Millard.</p>
+
+		<hr />
+		<p>This app uses the Twitter Bootstrap framework:</p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com/">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com/">Read the blog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+        </ul>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="components_files/widgets.js"></script>
+    <script src="components_files/jquery.js"></script>
+    <script src="components_files/prettify.js"></script>
+    <script src="components_files/bootstrap-transition.js"></script>
+    <script src="components_files/bootstrap-alert.js"></script>
+    <script src="components_files/bootstrap-modal.js"></script>
+    <script src="components_files/bootstrap-dropdown.js"></script>
+    <script src="components_files/bootstrap-scrollspy.js"></script>
+    <script src="components_files/bootstrap-tab.js"></script>
+    <script src="components_files/bootstrap-tooltip.js"></script>
+    <script src="components_files/bootstrap-popover.js"></script>
+    <script src="components_files/bootstrap-button.js"></script>
+    <script src="components_files/bootstrap-collapse.js"></script>
+    <script src="components_files/bootstrap-carousel.js"></script>
+    <script src="components_files/bootstrap-typeahead.js"></script>
+    <script src="components_files/bootstrap-affix.js"></script>
+    <script src="components_files/application.js"></script>
+
+	<script>
+	$(document).ready(function(){
+		// Load grid dynamically
+		/*
+		$.getJSON('http://apps.seme4.com/data-gov-uk-themes/grid.php', function(data) {
+		      var table='<table class="table table-bordered analysis">';
+		      $.each( data, function( index, item){
+		 			table += '<tr><td>'+index+'</td><td>'+item+'</td></tr>';       
+		      });
+		      table+='</table>';
+		      $("div.table-analysis").html( table );	
+		});
+		*/
+		
+		$("table.analysis td").hover(function() {
+				if($(this).index() > 0 && !$(this).parent().hasClass("no-overlap")){					
+		            $(this).parents('table').find('td:nth-child(' + ($(this).index() + 1) + ')').add($(this).parent()).addClass('highlight');
+				}
+	          }, function() {
+				if($(this).index() > 0 && !$(this).parent().hasClass("no-overlap")){
+	                $(this).parents('table').find('td:nth-child(' + ($(this).index() + 1) + ')').add($(this).parent()).removeClass('highlight');
+				}
+		});
+		
+		$("table.analysis td").click(function(){
+			
+			DataLap.reset();
+			
+			if($(this).html() == "0" || $(this).html() == "" || $(this).parent().hasClass("no-overlap")){
+				
+			} else {
+			
+				var t1 = $("table.analysis tr").eq(0).children("td").eq($(this).index()).html();
+				var t2 = $(this).parent("tr").children("td").eq(0).text();
+			
+				DataLap.getDatasets(t1, t2 , function(datasets){
+				
+					DataLap.datasetURLs = datasets;
+				
+					// Display a progress indicator (loaded 0/7 results...)
+					DataLap.hideLoader();
+					DataLap.showProgressBar();
+
+					// Retrieve information about the datasets (title, tags...)
+
+					var numOfResults = DataLap.datasetURLs.length;
+					//console.log("Getting "+numOfResults+" datasets' metadata...");
+					for(var i=0; i<numOfResults; i++){
+						DataLap.getMetadata(DataLap.datasetURLs[i], function(metadata){		
+								DataLap.datasets[metadata.ckan_url] = metadata;
+								DataLap.updateProgressBar();					
+						});
+						
+					}
+				});
+			}
+			
+		});
+		
+		DataLap.hideProgressBar();
+		
+		$("select#theme1").live("change",function(){
+			$("select#theme2").find("option").removeAttr("disabled");
+			$("select#theme2").find("option[value='"+$(this).val()+"']").attr("disabled", "true");
+		});
+		$("select#theme2").live("change",function(){
+			$("select#theme1").find("option").removeAttr("disabled");
+			$("select#theme1").find("option[value='"+$(this).val()+"']").attr("disabled", "true");		
+		});
+		
+		$("div.submit button").live("click",function(){
+					
+			DataLap.reset();
+					
+			// Display loading sign
+			DataLap.showLoader();
+			
+			// Retrieve dataset CKAN urls and create object list
+			var theme1 = $("select#theme1").val(), theme2 = $("select#theme2").val();
+			//console.log("Getting datasets...");
+			DataLap.getDatasets(theme1, theme2 , function(datasets){
+				
+				DataLap.datasetURLs = datasets;
+				
+				// Display a progress indicator (loaded 0/7 results...)
+				DataLap.hideLoader();
+				DataLap.showProgressBar();
+
+				// Retrieve information about the datasets (title, tags...)
+
+				var numOfResults = DataLap.datasetURLs.length;
+				//console.log("Getting "+numOfResults+" datasets' metadata...");
+				for(var i=0; i<numOfResults; i++){
+					DataLap.getMetadata(DataLap.datasetURLs[i], function(metadata){		
+							DataLap.datasets[metadata.ckan_url] = metadata;
+							DataLap.updateProgressBar();					
+					});
+						
+				}
+			});
+			// Display results			
+		});
+	});
+	</script>
+	
+	<script>
+	var DataLap = {
+		datasetURLs:[],
+		datasets:{},
+		reset:function(){
+			this.datasetURLs = [];
+			this.datasets = {};
+			this.hideProgressBar();
+			this.resetProgressBar();
+			$("div.resultHTML").html("")
+		},
+		showLoader:function(){
+			$("p.loading").show();
+		},
+		hideLoader:function(){
+			$("p.loading").hide()
+		},
+		getDatasets:function(theme1, theme2, callback){
+			$.ajax({
+				type:"GET",
+				url:"http://apps.seme4.com/data-gov-uk-themes/",
+				dataType:"json",
+				data:$.param({
+					t1:theme1,
+					t2:theme2
+				}),
+				success:function(data){
+					callback(data);
+				},
+				error:function(){
+					// display message
+				}
+			});	
+		},
+		resetProgressBar: function(){
+			$(".bar").width(245).text("");
+			$(".progress").removeClass("progress-success");
+		},
+		showProgressBar:function(){
+			$('.progress').addClass('active').addClass("progress-striped");
+			$("div.progressBar").show();
+		},
+		hideProgressBar:function(){
+			$("div.progressBar").hide();
+		},
+		updateProgressBar:function(){
+			var $bar = $('.bar');
+			var outerWidth = $(".progress").width();
+			var segmentLength = outerWidth/DataLap.datasetURLs.length;
+			
+			var dataset, numLoaded = 0;
+			for(dataset in DataLap.datasets) {
+			  numLoaded++;
+			}
+			//console.log(outerWidth + " = outerWidth");
+			//console.log((numLoaded+1) + " loaded...");
+			//console.log(DataLap.datasetURLs.length + " = DataLap.datasetURLs.length");
+			//console.log("animating bar to "+(outerWidth/DataLap.datasetURLs.length)*(numLoaded)+"px");
+			
+		    if (numLoaded==DataLap.datasetURLs.length) {
+		        $('.progress').removeClass('active').removeClass("progress-striped").addClass("progress-success");
+				this.showResults();
+		    } else {
+				if((outerWidth/DataLap.datasetURLs.length)*(numLoaded+1) > 245){
+		        	$bar.width((outerWidth/DataLap.datasetURLs.length)*(numLoaded+1));
+				}
+		    }
+			
+			$bar.text("Loaded "+numLoaded+"/"+DataLap.datasetURLs.length+" datasets...");
+			
+		},
+		getMetadata:function(url, callback){
+			$.ajax({
+				type:"GET",
+				url:url,
+				dataType:"json",
+				success:function(data){
+					callback(data);
+				},
+				error:function(e){
+					// display message
+					// Remove dataset from the URL list because it failed
+					for(var i=0; i<DataLap.datasetURLs.length; i++){
+						if(DataLap.datasetURLs[i] == url) {
+							DataLap.datasetURLs.splice(i,1);
+						}
+					}
+				}
+			});
+		},
+		showResults:function(){
+			var dataset = 0;
+			// var resultHTML = $("<ul />");
+			var tableHTML = $("<table />").addClass("table").addClass("table-striped").addClass("table-bordered");
+			tableHTML.append($("<thead/>").append($("<tr />").append("<th>Name</th><th>Download</th><th>Tags</th>")));
+			$.each(DataLap.datasets, function(k,v){
+				var rowHTML = $("<tr />");
+				// As a list
+				// resultHTML.append($("<li/>").text(v.title));
+				var name = $("<td />").html("<a class=\"name\" href="+v.ckan_url+" target=\"_blank\">"+v.title+"</a>"+"<span class='muted'>"+v.notes_rendered+"</span>");
+				//var webpage = $("<td />").html();
+				var download = $("<td />").html("<a href="+v.download_url+" target=\"_blank\"><i class=\"icon-download\"></i></a>").addClass("centered");
+				var notes = $("<td />").html(v.notes_rendered);
+				var format = $("<td />").addClass("centered");
+				
+				if(typeof v.resources != 'undefined' && v.resources.length > 0){
+					for(var i=0; i<v.resources.length; i++){
+						if(v.resources[i].format == "KML" || v.resources[i].format == "WMS" || v.resources[i].format == "SHP" || v.resources[i].format == "zip-kml" || v.resources[i].format == "ESRIshapefilezip" || v.resources[i].format == "kmlshp" || v.resources[i].format == "KMLSHP" || v.resources[i].format == "KMLSHP"){
+							download = $("<td />").html("<a href="+v.download_url+" target=\"_blank\"><i class=\"icon-globe\"></i> ("+v.resources[i].format+")</a>").addClass("centered");
+						} else if(v.resources[i].format == "CSV" || v.resources[i].format == "csv"){
+							download = $("<td />").html("<a href="+v.download_url+" target=\"_blank\"><i class=\"icon-th\"></i> (CSV)</a>").addClass("centered");
+						} else if(v.resources[i].format == "xls" || v.resources[i].format == "XLS"){
+							download = $("<td />").html("<a href="+v.download_url+" target=\"_blank\"><i class=\"icon-list-alt\"></i> (XLS)</a>").addClass("centered");	
+						} else if(v.resources[i].format == "xml" || v.resources[i].format == "XML"){
+								download = $("<td />").html("<a href="+v.download_url+" target=\"_blank\"><i class=\"icon-list\"></i> (XML)</a>").addClass("centered");
+						}
+					}
+				}
+				
+				var tags = $("<td />");
+				
+				if(typeof v.tags != 'undefined' && v.tags.length > 0){
+					for(var i=0; i<v.tags.length; i++){
+						tags.html(tags.html()+"<a href=\"http://data.gov.uk/data/search?tags="+v.tags[i]+"\" target=\"_blank\"><span class=\"label label-info\">"+v.tags[i]+"</span></a>");
+					}
+				}
+				//tags.text(tags.text().substring(2,tags.text().length))
+				rowHTML.append(name).append(download).append(tags);
+				tableHTML.append(rowHTML);
+			});
+			$("div.resultHTML").html(tableHTML);
+		}	
+	}; // DataLap
+	</script>
+
+</body>
+</html>
